@@ -69,6 +69,33 @@ nav.navbar .container{
   border: none;
 }
 
+h1{
+  font-size: 60px;
+  font-weight: 300;
+  margin-top: 0;
+}
+
+pre .highlight {
+  background: rgba(255,255,0,.2);
+  padding: 1px;
+}
+
+h4.list{
+  padding: 10px 0;
+}
+
+footer{
+  padding: 15px 20px 40px 20px;
+}
+
+footer h3{
+  margin: 0;
+}
+
+.helpers{
+  font-size: 120%;
+}
+
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
 
