@@ -58,19 +58,27 @@
     <div class="container helpers">
       <h1>Helpers</h1>
       <h2>Sizing Helpers</h2>
-      There are 3 sizing classes that can be added to the root class of the devices to scale it:
-      <pre><code class="language-markup">cd-lg
-cd-sm
-cd-xs
+      There are 9 default sizing classes that can be added to the root class of the devices to scale it.
+      <br>
+      The number represents how much the device is scaled down based on it's original size. For example <span class="b">cd-scale-70</span> is 70% of the original device size.
+      <pre><code class="language-markup">cd-scale-10
+cd-scale-20
+cd-scale-30
+cd-scale-40
+cd-scale-50
+cd-scale-60
+cd-scale-70
+cd-scale-80
+cd-scale-90
 </code></pre>
-cd-lg is 130% of the device size, cd-sm is 70%, and cd-xs is 50%. Medium is considered the default size.
 <hr>
 You can also set the font-size on the device with a percentage to scale the device to any size that you want.
+<br>
+This example scales the device size to <span class="b">65%</span> of its original size.
 <pre><code class="language-markup">&lt;div class="cd-iphone-6" style="font-size: 65%"&gt;
   ...
 &lt;/div&gt;
 </code></pre>
-This scales the device size to 65% of its original size.
 <hr>
 <h2>Center Helper</h2>
 To center the device horizontally within its parent element, add the class cd-center.
