@@ -1,16 +1,15 @@
 $(function(){
   $('.cd-screen').each(function(){
-    var _this = this;
-    if($(_this).hasClass('cd-smart-loader')){
-      if(isSlideShow(_this)){
-        $('> :gt(0)', _this).hide();
+    if($(this).hasClass('cd-smart-loader')){
+      if(isSlideShow(this)){
+        $('> :gt(0)', this).hide();
       }
-      $('> :first-child',_this).each(function(){
+      $('> :first-child',this).each(function(){
         handleLoadBinding(this);
       });
     }
     else{
-      callSlideShow(_this);
+      callSlideShow(this);
     }
   });
 
@@ -39,7 +38,7 @@ $(function(){
   }
 
   function handleLoad(){
-    var loadSpeed = getOptionalData($(this).parent('.cd-smart-loader'), 'load-in-speed', 250);
+    var loadSpeed = getOptionalData($(this).parent('.cd-smart-loader')[0], 'fade-in-speed', 250);
     $(this).fadeIn(loadSpeed);
     callSlideShow($(this).parent()[0]);
   }
@@ -50,4 +49,42 @@ $(function(){
     }
     return defaultValue;
   }
+
+  $('.cd-device-loader').each(function(){
+    if( ! $(this).hasClass('cd-fill-parent')){
+      fadeDeviceIn(this);
+    }
+  });
+
+  //// Container Filler ////
+  var firstGo = true;
+  var scale;
+  fillContainer();
+  $(window).resize(function(){
+    fillContainer();
+  });
+
+  function fillContainer(){
+    $('.cd-fill-parent').each(function(){
+      if( firstGo ){
+        $(this).data('initial-width', $(this).width());
+      }
+      if( $(this).hasClass('cd-padded-device')){
+        var fontPercentage = ($(this).parent().width() - 40)/parseInt($(this).data('initial-width')) * 100;
+      }
+      else{
+        var fontPercentage = $(this).parent().width()/parseInt($(this).data('initial-width')) * 100;
+      }
+      $(this).css('font-size', fontPercentage + '%');
+      if( firstGo ){
+        fadeDeviceIn(this);
+      }
+    });
+    firstGo = false;
+  }
+
+  function fadeDeviceIn(_self){
+    $(_self).css('visibility', 'visible').hide().fadeIn(getOptionalData(_self, 'fade-in-speed', 250));
+  }
+
 });
